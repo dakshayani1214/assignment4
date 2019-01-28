@@ -1,0 +1,95 @@
+
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Submit Form Using AJAX,PHP and javascript</title>
+		<script src="text/javascript">
+	function myFunction() {
+	var name = document.getElementById("name").value;
+	var contact = document.getElementById("contact").value;
+	var gender = document.form.gender.value;
+	var address = document.getElementById("address").value;
+	var payment = document.form.pay.value;
+	var pendrive = document.getElementById("pendrive").value;
+	var mouse = document.getElementById("mouse").value;
+	var keyboard = document.getElementById("keyboard").value;
+	var laptop = document.getElementById("laptop").value;
+	var dataString = 'name=' + name + '&contact=' + contact + '&gender=' + gender + '&address=' + address + '&payment=' + payment +'&pendrive=' + pendrive + '&mouse=' + mouse + '&keyboard=' + keyboard + '&laptop=' + laptop;
+	var xmlObj=new XMLHttpRequest();
+	xmlObj.onreadystatechange=function()
+		{
+		    if(this.readyState == 4 && this.status == 200)
+                                         {
+                                           document.getElementById("res").innerHTML=this.responseText;
+                                         }
+                                      };
+       	   xmlObj.open("GET",dataString,true);
+       	   xmlObj.send();
+     	   }
+	
+	return false;
+	}</script>
+		<style>
+			table, th, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Submit Form Using AJAX,PHP and javascript</h2>
+		<!-- Required Div Starts Here -->
+		<form id="form" name="form">
+			<h3>Fill Your Information!</h3>
+			<div>
+				<label>Name :</label>
+				<input id="name" type="text"><br/>
+				<label>Gender :</label>
+				<input type="radio" name="gender" value="Male"><label>Male</label>
+				<input type="radio" name="gender" value="Female"><label>Female</label><br/>
+				<label>Address :</label>
+				<textarea id="address"></textarea><br/>
+				<label>Contact No :</label>
+				<input id="contact" type="text"><br/>
+				<label>Payment Options :</label>
+				<input type="radio" name="pay" value="Cash on Delivery"><label>COD</label>
+				<input type="radio" name="pay" value="NetBanking"><label>Net Banking</label>
+				<input type="radio" name="pay" value="Credit/Debit Card"><label>Credit/Debit Card</label><br/>
+				<br/>
+				<table id="cart">
+					<tr id="heads">
+						<th>Product</th>
+						<th>Unit Price</th> 
+						<th>Quantity</th>
+					</tr>
+					<tr>
+						<td>USB Pendrive</td>
+						<td>300</td> 
+						<td><input id="pendrive" type="number" min="0"></td>
+					</tr>
+					<tr>
+						<td>Wireless Mouse</td>
+						<td>200</td> 
+						<td><input id="mouse" type="number" min="0"></td>
+					</tr>
+					<tr>
+						<td>Keyboard</td>
+						<td>400</td> 
+						<td><input id="keyboard" type="number" min="0"></td>
+					</tr>
+					<tr>
+						<td>Laptop</td>
+						<td>33000</td> 
+						<td><input id="laptop" type="number" min="0"></td>
+					</tr>
+				</table>
+				<br/>
+				<input id="submit" onclick="myFunction()" type="button" value="Submit">
+			</div>
+		</form>
+	</body>
+</html>
+
+
